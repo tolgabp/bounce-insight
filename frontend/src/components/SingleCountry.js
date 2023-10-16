@@ -1,11 +1,9 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
-import { API_URL } from '../services/apiConfig';
-
 
 async function fetchCountry(name) {
-  const res = await fetch(`${API_URL}/countries/${name}`);
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/countries/${name}`);
   if (!res.ok) {
     throw new Error("Network response was not ok " + res.statusText);
   }

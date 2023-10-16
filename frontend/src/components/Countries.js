@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Article from "./Article";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCountries } from "../services/api";
-import { API_URL } from "../services/apiConfig";
 
 const regions = [
   { name: "Africa" },
@@ -22,7 +21,7 @@ export default function Countries() {
 
   const { data: allCountriesData } = useQuery(
     ["allCountries"],
-    () => fetchCountries(`${API_URL}/countries`),
+    () => fetchCountries(`${process.env.REACT_APP_API_URL}/countries`),
     {
       staleTime: 60 * 60 * 1000,
       cacheTime: 120 * 60 * 1000,
@@ -35,7 +34,10 @@ export default function Countries() {
 
   const { data: searchCountryData } = useQuery(
     ["searchCountry", searchText],
-    () => fetchCountries(`${API_URL}/countries/${searchText}`),
+    () =>
+      fetchCountries(
+        `${process.env.REACT_APP_API_URL}/countries/${searchText}`
+      ),
     {
       enabled: !!searchText,
       staleTime: 60 * 60 * 1000,
@@ -49,7 +51,10 @@ export default function Countries() {
 
   const { data: filterByRegionData } = useQuery(
     ["filterByRegion", currentRegion],
-    () => fetchCountries(`${API_URL}/regions/${currentRegion}`),
+    () =>
+      fetchCountries(
+        `${process.env.REACT_APP_API_URL}/regions/${currentRegion}`
+      ),
     {
       enabled: !!currentRegion,
       staleTime: 60 * 60 * 1000,
