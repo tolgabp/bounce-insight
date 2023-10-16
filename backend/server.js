@@ -1,10 +1,10 @@
 //load env variables
-require('dotenv').config();
+require("dotenv").config();
 
 //import dependencies
-const express = require('express');
-const cors = require('cors');
-const countryRoutes = require('./routes/countryRoutes');
+const express = require("express");
+const cors = require("cors");
+const countryRoutes = require("./routes/countryRoutes");
 
 //create an express app
 const app = express();
@@ -15,8 +15,12 @@ app.use(cors());
 //configure express app | express can read json body now
 app.use(express.json());
 
-app.use('/api', countryRoutes);
+app.get("/", (req, res) => {
+  res.send("API is working!");
+});
+
+app.use("/api", countryRoutes);
 
 app.listen(process.env.PORT, () => {
-  console.log('listening ');
+  console.log("listening ");
 });
