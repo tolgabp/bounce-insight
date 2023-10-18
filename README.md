@@ -1,5 +1,3 @@
-# README.md
-
 ## Introduction
 
 Welcome to my Fullstack Web Application! This application is a robust platform powered by a backend running on Node.js, bolstered by the efficient Express.js framework, and fronted by the dynamic React.js library. The primary purpose of this application is to provide users with detailed information about countries, including their flags, population, region, and more.
