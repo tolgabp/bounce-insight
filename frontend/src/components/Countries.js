@@ -93,7 +93,11 @@ export default function Countries() {
         </div>
       )}{" "}
       {!displayCountries.length ? (
-        <h1>Loading...</h1>
+        <div className="flex justify-center items-center">
+          <div className="bg-teal-500 m-4 p-4 rounded-lg shadow-lg">
+            <big>Loading...</big>
+          </div>
+        </div>
       ) : (
         <section className="container mx-auto p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
